@@ -143,9 +143,17 @@ for (i in 1:dim(pr)[1])
 		row = cbind(pr2[i,2],termsum)
 		subterms <- rbind(subterms, row)
 	}
-
+	
 ust = unique(subterms)
-ust$termsum = as.numeric(ust$termsum)
+for (i in 1:dim(ust)[1])
+{
+if (ust[i,2] == 0)
+{
+ust[i,2] = 1
+}
+}
+
+ust$termsum = as.numeric(as.character(ust$termsum))
 return (ust)
 })
 
